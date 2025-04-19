@@ -1,26 +1,97 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.code-font {
+    font-family: var(--font-source-code);
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+
+
+  * {
+    cursor: none;
+  }
+  
+  
+  
+
+
+
+  /* From Uiverse.io by SelfMadeSystem */ 
+/* The switch - the box around the slider */
+.switch {
+    --a: 0.5s ease-out;
+    cursor: pointer;
+    position: relative;
+    display: inline-flex;
+    height: 0.75em;
+    border-radius: 1.5em;
+    box-shadow: 0 0 0 0.4em #aaa; 
+    aspect-ratio: 212.4992/84.4688;
+    background-color: #aaa;
+  }
+  
+  /* Hide default HTML checkbox */
+  #check {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .switch svg {
+    height: 100%;
+  }
+  
+  .switch svg path {
+    color: #fff;
+    stroke-width: 16;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 136 224;
+    transition:
+      all var(--a),
+      0s transform;
+    transform-origin: center;
+  }
+  
+  #check:checked ~ .switch svg path {
+    stroke-dashoffset: 180;
+    transform: scaleY(-1);
+  }
+  
+
+  /* From Uiverse.io by Voxybuns */ 
+.card {
+    /* Variables */
+    --button_radius: 0.75em;
+    --button_color: #e8e8e8;
+    --button_outline_color: #000000;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--button_radius);
+    background: var(--button_outline_color);
+      max-width: 700px; /* or whatever max you want */
+  margin: 0 auto; 
+  margin-bottom: 70px;
+  }
+  
+  .card_top {
+    display: block;
+    box-sizing: border-box;
+    border: 2px solid var(--button_outline_color);
+    border-radius: var(--button_radius);
+    padding: 0.75em 1.5em;
+    background: var(--button_color);
+    color: var(--button_outline_color);
+    transform: translateY(-0.2em);
+    transition: transform 0.1s ease;
+  }
+  
+  .card:hover .card_top {
+    /* Pull the button upwards when hovered */
+    transform: translateY(-0.33em);
+  }
+  
+  .card:active .card_top {
+    /* Push the button downwards when pressed */
+    transform: translateY(0);
+  }
+  
