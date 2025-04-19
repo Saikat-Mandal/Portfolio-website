@@ -1,7 +1,7 @@
 
 "use client";
 import useMousePosition from "@/app/hooks/useMousePosition";
-import "./DotRing.css";
+import "./dotring.css"
 
 const DotRing = () => {
     // 1.
