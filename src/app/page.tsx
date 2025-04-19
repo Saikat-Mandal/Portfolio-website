@@ -91,6 +91,11 @@ export default function Home() {
   // Get current content based on language
   const t = content[language];
 
+
+  const sendMail = () => {
+    window.location.href = "mailto:works.saikat@gmail.com";
+  }
+
   return (
     <div className="px-6 md:px-20 code-font" >
       <DotRing />
@@ -117,7 +122,7 @@ export default function Home() {
         <div>
           <p className="text-4xl md:text-4xl font-bold">{t.intro}</p>
           <p className="md:text-2xl my-5">{t.findMe} <Link target="_blank" href="https://x.com/saikat_07_" className="underline">{t.twitter}</Link> or on <Link target="_blank" href="https://www.linkedin.com/in/saikat-mandal-310ab61b0/" className="underline">{t.linkedin}</Link>,
-            or just <Link target="_blank" href="" className="underline">{t.emailMe}</Link> {t.saying}</p>
+            or just <span onClick={sendMail} className="underline">{t.emailMe}</span> {t.saying}</p>
         </div>
         <Image
           src={mainImage}
@@ -183,7 +188,7 @@ export default function Home() {
       <div className="">
         <h1 className="text-2xl font-bold my-20 text-center md:text-4xl">{t.codeWorkTitle}</h1>
 
-        <div className="flex flex-wrap gap-4 max-w-5xl w-full justify-between mx-auto mb-10">
+        <div className="flex flex-wrap gap-4 max-w-5xl w-full justify-between items-center mx-auto mb-10">
           <ProjectCard>
             <div className="flex items-center justify-between">
               <p className="text-2xl font-bold">{t.askItTitle}</p>
@@ -229,7 +234,7 @@ export default function Home() {
       {/* footer  */}
       <footer className="py-10 flex items-center justify-between">
         <div className="flex items-center">
-          <Link href=""> <MdOutlineEmail className="text-3xl hover:scale-105" /></Link>
+          <span onClick={sendMail}> <MdOutlineEmail className="text-3xl hover:scale-105" /></span>
           <Link target="_blank" href="https://github.com/Saikat-Mandal"><LuGithub className="text-3xl ml-6 hover:scale-105" /></Link>
           <Link target="_blank" href="https://discord.com/channels/_saikat07"><RiDiscordLine className="text-3xl ml-6 hover:scale-105" /></Link>
         </div>
