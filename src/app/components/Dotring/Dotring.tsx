@@ -1,43 +1,34 @@
 "use client";
-import useMousePosition from "@/app/hooks/useMousePosition";
+import useMousePosition from "../../hooks/useMousePosition";
 
 const DotRing = () => {
     const { x, y } = useMousePosition();
 
-    const ringStyle = {
-        position: "fixed",
-        width: "30px",
-        height: "30px",
-        border: "2px solid rgba(31, 30, 30, 0.808)",
-        borderRadius: "100%",
-        transform: `translate(-50%, -50%)`,
-        transitionDuration: "30ms",
-        transitionTimingFunction: "linear",
-        willChange: "width, height, transform, border",
-        zIndex: 999,
-        pointerEvents: "none",
-        transformOrigin: "center",
-        top: `${y}px`,
-        left: `${x}px`
-    };
-
-    const dotStyle = {
-        position: "fixed",
-        top: `${y}px`,
-        left: `${x}px`,
-        width: "16px",
-        height: "16px",
-        backgroundColor: "black",
-        borderRadius: "100%",
-        transform: "translate(-50%, -50%)",
-        zIndex: 999,
-        pointerEvents: "none"
-    };
-
     return (
         <>
-            <div style={ringStyle}></div>
-            <div style={dotStyle}></div>
+            <div
+                className="fixed w-[30px] h-[30px] border-[2px] border-[rgba(31,30,30,0.808)] rounded-full 
+                           transition-[width,height,transform,border] duration-[30ms] ease-linear 
+                           will-change-[width,height,transform,border] z-[999] pointer-events-none"
+                style={{
+                    left: `${x}px`,
+                    top: `${y}px`,
+                    transform: "translate(-50%, -50%)",
+                    transitionDuration: "30ms",
+                    transitionTimingFunction: "linear",
+                    WebkitTransitionDuration: "30ms",  // Webkit support for transition-duration
+                    WebkitTransitionTimingFunction: "linear", // Webkit support for transition-timing-function
+                }}
+            ></div>
+
+            <div
+                className="fixed w-[16px] h-[16px] bg-black rounded-full z-[999] pointer-events-none"
+                style={{
+                    left: `${x}px`,
+                    top: `${y}px`,
+                    transform: "translate(-50%, -50%)",
+                }}
+            ></div>
         </>
     );
 };
