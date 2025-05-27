@@ -11,7 +11,7 @@ import ProjectCard from "./components/ProjectCard";
 import { IoLinkSharp } from "react-icons/io5";
 import DotRing from "./components/Dotring/Dotring";
 import Card from "./components/Card";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 // Content translations
 const content = {
@@ -24,13 +24,13 @@ const content = {
     emailMe: "send me an email",
     saying: "saying hi",
     professionalWorkTitle: "Professional Work",
-    postnordTitle: "Postnord (TCS)",
+    postnordTitle: "TCS (Postnord)",
     postnordLocation: "On site, Pune India · Jul 2024 - Present",
     postnordPosition: "Software Engineer",
     qvikTitle: "Qvik.io",
     qvikLocation: "Remote, Noida India · Feb 2023 – May 2023",
     qvikPosition: "Software developer intern",
-    codeWorkTitle: "Code Work",
+    codeWorkTitle: "Software development projects",
     askItTitle: "Ask it",
     askItDesc: "A Q/A platform for engineers to share doubts and answers",
     fileupTitle: "Fileup",
@@ -73,6 +73,16 @@ export default function Home() {
   // State to track current language
   const [language, setLanguage] = useState<"en" | "jp">("en");
   const [showAlert, setShowAlert] = useState<boolean>(false)
+  const MLref = useRef<HTMLDivElement>(null);
+  const SoftwareRef = useRef<HTMLDivElement>(null);
+
+  const scrollToML = () => {
+    MLref.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const scrollToSoftware = () => {
+    SoftwareRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
 
   // Toggle between languages
   const changeLanguage = () => {
@@ -101,6 +111,12 @@ export default function Home() {
       <DotRing />
       <div className="flex justify-between py-6">
         <h1 className="text-xl font-bold">{t.name}</h1>
+
+        <div className="flex items-center gap-x-12">
+          <p onClick={scrollToML} className="text-xl font-bold hover:text-amber-300 hover:transition-all duration-300">Data science / ML</p>
+          <p onClick={scrollToSoftware} className="text-xl font-bold hover:text-blue-400 hover:transition-all duration-300">Software dev projects</p>
+        </div>
+
         <div>
           <div >
             <input onChange={changeLanguage} id="check" type="checkbox" checked={language === "jp"} readOnly />
@@ -185,14 +201,52 @@ export default function Home() {
 
       {/* projects  */}
 
-      <div className="">
-        <h1 className="text-2xl font-bold my-20 text-center md:text-4xl">{t.codeWorkTitle}</h1>
+      {/* data science and machine learning  */}
+      <div ref={MLref} >
 
-        <div className="flex flex-wrap gap-4 max-w-5xl w-full justify-between items-center mx-auto mb-10">
+        <h1 className="text-2xl font-bold mb-20 mt-40 text-center md:text-4xl">Data science / Machine learning projects</h1>
+        <h1 className="text-2xl font-bold mb-10 mt-20 text-center  md:text-2xl">Classification problems</h1>
+        <div className="flex flex-wrap gap-4 max-w-5xl w-full justify-between  mx-auto mb-10">
+          <ProjectCard>
+            <div className="flex items-center justify-between">
+              <p className="text-2xl font-bold">Heart disease prediction</p>
+              <Link target="_blank" href="https://github.com/Saikat-Mandal/Classification-ML/blob/main/Heart-disease-prediction.ipynb">
+                <IoLinkSharp className="hover:scale-150 transition-all duration-300" />
+              </Link>
+            </div>
+            <p className=" my-2">Heart Disease Prediction is a classic binary classification problem in machine learning.
+              Using datasets like the UCI Heart Disease dataset,
+              I built a model to predict the likelihood of heart disease based on medical attributes such as age,
+              cholesterol, and blood pressure.
+              This project improved my skills in feature engineering and
+              highlighted the real-world impact of ML in healthcare.</p>
+
+          </ProjectCard>
+
+          <ProjectCard>
+            <div className="flex items-center justify-between">
+              <p className="text-2xl font-bold">Titanic: Machine Learning from Disaster</p>
+              <Link target="_blank" href="https://github.com/Saikat-Mandal/Classification-ML/blob/main/Heart-disease-prediction.ipynb">
+                <IoLinkSharp className="hover:scale-150 transition-all duration-300" />
+              </Link>
+            </div>
+            <p className=" my-2">Titanic: Machine Learning from Disaster is a knowledge competition on Kaggle.
+              Many people started practicing in machine learning with this competition, so did I.
+              This is a binary classification problem: based on information about Titanic passengers we predict whether they survived or not.
+              General description and data are available on Kaggle. Titanic dataset provides interesting opportunities for feature engineering.</p>
+          </ProjectCard>
+        </div>
+      </div>
+
+      {/* software dev */}
+      <div ref={SoftwareRef} className="">
+        <h1 className="text-2xl font-bold mb-20 mt-40 text-center md:text-4xl">{t.codeWorkTitle}</h1>
+
+        <div className="flex flex-wrap gap-4 max-w-5xl w-full justify-between  mx-auto mb-10">
           <ProjectCard>
             <div className="flex items-center justify-between">
               <p className="text-2xl font-bold">{t.askItTitle}</p>
-              <Link target="_blank" href="https://github.com/Saikat-Mandal/Snipcode.io"> <IoLinkSharp /></Link>
+              <Link target="_blank" href="https://github.com/Saikat-Mandal/Snipcode.io">  <IoLinkSharp className="hover:scale-150 transition-all duration-300" /></Link>
             </div>
             <p className="font-semibold my-2">{t.askItDesc}</p>
             <p>• Reactjs, Nodejs, mongoDb</p>
@@ -201,7 +255,7 @@ export default function Home() {
           <ProjectCard>
             <div className="flex items-center justify-between">
               <p className="text-2xl font-bold">{t.fileupTitle}</p>
-              <Link target="_blank" href="https://github.com/Saikat-Mandal/Dropbox-2.0"> <IoLinkSharp /></Link>
+              <Link target="_blank" href="https://github.com/Saikat-Mandal/Dropbox-2.0">  <IoLinkSharp className="hover:scale-150 transition-all duration-300" /></Link>
             </div>
             <p className="font-semibold my-2">{t.fileupDesc}</p>
             <p>• Reactjs, firebase auth, firebase storage</p>
@@ -213,7 +267,7 @@ export default function Home() {
           <ProjectCard>
             <div className="flex items-center justify-between">
               <p className="text-2xl font-bold">{t.gluTitle}</p>
-              <Link target="_blank" href="https://github.com/Saikat-Mandal/Hostel-backend"> <IoLinkSharp /></Link>
+              <Link target="_blank" href="https://github.com/Saikat-Mandal/Hostel-backend">  <IoLinkSharp className="hover:scale-150 transition-all duration-300" /></Link>
             </div>
             <p className="font-semibold my-2">{t.gluDesc}</p>
             <p>• React native, expo, spring boot , postgres</p>
@@ -222,7 +276,7 @@ export default function Home() {
           <ProjectCard>
             <div className="flex items-center justify-between">
               <p className="text-2xl font-bold">{t.yourBlogsTitle}</p>
-              <Link target="_blank" href="https://github.com/Saikat-Mandal/Blog-website"> <IoLinkSharp /></Link>
+              <Link target="_blank" href="https://github.com/Saikat-Mandal/Blog-website">  <IoLinkSharp className="hover:scale-150 transition-all duration-300" /></Link>
             </div>
             <p className="font-semibold my-2">{t.yourBlogsDesc}</p>
             <p>• ejs, nodejs, mongoDb</p>
