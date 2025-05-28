@@ -12,6 +12,7 @@ import { IoLinkSharp } from "react-icons/io5";
 import DotRing from "./components/Dotring/Dotring";
 import Card from "./components/Card";
 import { useState, useRef } from "react";
+import { motion } from "motion/react"
 
 // Content translations
 const content = {
@@ -108,13 +109,16 @@ export default function Home() {
 
   return (
     <div className="px-6 md:px-20 code-font" >
-      <DotRing />
+      <div className="hidden lg:block">
+        <DotRing />
+      </div>
+
       <div className="flex justify-between py-6">
         <h1 className="text-xl font-bold">{t.name}</h1>
 
-        <div className="flex items-center gap-x-12">
-          <p onClick={scrollToML} className="text-xl font-bold hover:text-amber-300 hover:transition-all duration-300">Data science / ML</p>
-          <p onClick={scrollToSoftware} className="text-xl font-bold hover:text-blue-400 hover:transition-all duration-300">Software dev projects</p>
+        <div className="flex items-center md:gap-x-12 gap-x-3">
+          <p onClick={scrollToML} className="md:text-xl text-xs font-medium hover:text-amber-300 hover:transition-all duration-300">Data science / ML</p>
+          <p onClick={scrollToSoftware} className="md:text-xl text-xs font-medium hover:text-blue-400 hover:transition-all duration-300">Software dev projects</p>
         </div>
 
         <div>
@@ -135,17 +139,27 @@ export default function Home() {
       </div>
 
       <div className="md:flex items-center mt-10 h-[80vh]">
-        <div>
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <p className="text-4xl md:text-4xl font-bold">{t.intro}</p>
           <p className="md:text-2xl my-5">{t.findMe} <Link target="_blank" href="https://x.com/saikat_07_" className="underline">{t.twitter}</Link> or on <Link target="_blank" href="https://www.linkedin.com/in/saikat-mandal-310ab61b0/" className="underline">{t.linkedin}</Link>,
             or just <span onClick={sendMail} className="underline">{t.emailMe}</span> {t.saying}</p>
-        </div>
-        <Image
-          src={mainImage}
-          width={800}
-          height={800}
-          alt="Picture of the author"
-        />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <Image
+            src={mainImage}
+            width={800}
+            height={800}
+            alt="Picture of the author"
+          />
+        </motion.div>
       </div>
 
 
