@@ -225,7 +225,7 @@ export default function Home() {
             <div className="flex items-center justify-between">
               <p className="text-2xl font-bold">Heart disease prediction</p>
               <Link target="_blank" href="https://github.com/Saikat-Mandal/Classification-ML/blob/main/Heart-disease-prediction.ipynb">
-                <IoLinkSharp className="hover:scale-150 transition-all duration-300" />
+                <IoLinkSharp className="text-blue-400 text-xl hover:scale-150 transition-all duration-300" />
               </Link>
             </div>
             <p className=" my-2">Heart Disease Prediction is a classic binary classification problem in machine learning.
@@ -241,7 +241,7 @@ export default function Home() {
             <div className="flex items-center justify-between">
               <p className="text-2xl font-bold">Titanic: Machine Learning from Disaster</p>
               <Link target="_blank" href="https://github.com/Saikat-Mandal/Classification-ML/blob/main/Heart-disease-prediction.ipynb">
-                <IoLinkSharp className="hover:scale-150 transition-all duration-300" />
+                <IoLinkSharp className="text-blue-400 text-xl hover:scale-150 transition-all duration-300" />
               </Link>
             </div>
             <p className=" my-2">Titanic: Machine Learning from Disaster is a knowledge competition on Kaggle.
@@ -260,7 +260,7 @@ export default function Home() {
           <ProjectCard>
             <div className="flex items-center justify-between">
               <p className="text-2xl font-bold">{t.askItTitle}</p>
-              <Link target="_blank" href="https://github.com/Saikat-Mandal/Snipcode.io">  <IoLinkSharp className="hover:scale-150 transition-all duration-300" /></Link>
+              <Link target="_blank" href="https://github.com/Saikat-Mandal/Snipcode.io">  <IoLinkSharp className="text-blue-400 text-xl hover:scale-150 transition-all duration-300" /></Link>
             </div>
             <p className="font-semibold my-2">{t.askItDesc}</p>
             <p>• Reactjs, Nodejs, mongoDb</p>
@@ -269,7 +269,7 @@ export default function Home() {
           <ProjectCard>
             <div className="flex items-center justify-between">
               <p className="text-2xl font-bold">{t.fileupTitle}</p>
-              <Link target="_blank" href="https://github.com/Saikat-Mandal/Dropbox-2.0">  <IoLinkSharp className="hover:scale-150 transition-all duration-300" /></Link>
+              <Link target="_blank" href="https://github.com/Saikat-Mandal/Dropbox-2.0">  <IoLinkSharp className="text-blue-400 text-xl hover:scale-150 transition-all duration-300" /></Link>
             </div>
             <p className="font-semibold my-2">{t.fileupDesc}</p>
             <p>• Reactjs, firebase auth, firebase storage</p>
@@ -281,7 +281,7 @@ export default function Home() {
           <ProjectCard>
             <div className="flex items-center justify-between">
               <p className="text-2xl font-bold">{t.gluTitle}</p>
-              <Link target="_blank" href="https://github.com/Saikat-Mandal/Hostel-backend">  <IoLinkSharp className="hover:scale-150 transition-all duration-300" /></Link>
+              <Link target="_blank" href="https://github.com/Saikat-Mandal/Hostel-backend">  <IoLinkSharp className="text-blue-400 text-xl hover:scale-150 transition-all duration-300" /></Link>
             </div>
             <p className="font-semibold my-2">{t.gluDesc}</p>
             <p>• React native, expo, spring boot , postgres</p>
@@ -290,7 +290,7 @@ export default function Home() {
           <ProjectCard>
             <div className="flex items-center justify-between">
               <p className="text-2xl font-bold">{t.yourBlogsTitle}</p>
-              <Link target="_blank" href="https://github.com/Saikat-Mandal/Blog-website">  <IoLinkSharp className="hover:scale-150 transition-all duration-300" /></Link>
+              <Link target="_blank" href="https://github.com/Saikat-Mandal/Blog-website">  <IoLinkSharp className="text-blue-400 text-xl hover:scale-150 transition-all duration-300" /></Link>
             </div>
             <p className="font-semibold my-2">{t.yourBlogsDesc}</p>
             <p>• ejs, nodejs, mongoDb</p>
@@ -306,7 +306,7 @@ export default function Home() {
           <Link target="_blank" href="https://github.com/Saikat-Mandal"><LuGithub className="text-3xl ml-6 hover:scale-105" /></Link>
           <Link target="_blank" href="https://discord.com/channels/_saikat07"><RiDiscordLine className="text-3xl ml-6 hover:scale-105" /></Link>
         </div>
-        <p>{t.madeWith}</p>
+        <p className="text-xs md:text-base">{t.madeWith}</p>
       </footer>
     </div>
   );
