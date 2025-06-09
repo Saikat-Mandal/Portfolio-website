@@ -219,6 +219,7 @@ export default function Home() {
       <div ref={MLref} >
 
         <h1 className="text-2xl font-bold mb-20 mt-40 text-center md:text-4xl">Data science / Machine learning projects</h1>
+
         <h1 className="text-2xl font-bold mb-10 mt-20 text-center  md:text-2xl">Classification problems</h1>
         <div className="flex flex-wrap gap-4 max-w-5xl w-full justify-between  mx-auto mb-10">
           <ProjectCard>
@@ -239,6 +240,24 @@ export default function Home() {
 
           <ProjectCard>
             <div className="flex items-center justify-between">
+              <p className="text-2xl font-bold">Iris flower classification</p>
+              <Link target="_blank" href="https://github.com/Saikat-Mandal/Classification-ML/blob/main/Project_3_classification.ipynb">
+                <IoLinkSharp className="text-blue-400 text-xl hover:scale-150 transition-all duration-300" />
+              </Link>
+            </div>
+            <p className=" my-2">Iris Flower Classification is a well-known multiclass classification problem in machine learning.
+              Using the classic Iris dataset, I built a Logistic Regression model from scratch with NumPy and math to classify iris species based on features like petal length,
+              petal width, sepal length, and sepal width.
+              This project strengthened my understanding of core ML algorithms,
+              especially how multiclass classification can be handled using a One-vs-Rest approach,
+              and gave me hands-on experience in implementing machine learning logic without any external libraries.
+
+            </p>
+
+          </ProjectCard>
+
+          <ProjectCard>
+            <div className="flex items-center justify-between">
               <p className="text-2xl font-bold">Titanic: Machine Learning from Disaster</p>
               <Link target="_blank" href="https://github.com/Saikat-Mandal/Classification-ML/blob/main/Heart-disease-prediction.ipynb">
                 <IoLinkSharp className="text-blue-400 text-xl hover:scale-150 transition-all duration-300" />
@@ -250,6 +269,40 @@ export default function Home() {
               General description and data are available on Kaggle. Titanic dataset provides interesting opportunities for feature engineering.</p>
           </ProjectCard>
         </div>
+
+        <h1 className="text-2xl font-bold mb-10 mt-20 text-center  md:text-2xl">Custom models</h1>
+        <div className="flex flex-wrap gap-4 max-w-5xl w-full justify-between  mx-auto mb-10">
+          <ProjectCard>
+            <div className="flex items-center justify-between">
+              <p className="text-2xl font-bold">Linear regression</p>
+              <Link target="_blank" href="https://github.com/Saikat-Mandal/Custom-models-ML/blob/main/Linear_regressioin.ipynb">
+                <IoLinkSharp className="text-blue-400 text-xl hover:scale-150 transition-all duration-300" />
+              </Link>
+            </div>
+            <p className=" my-2">I built a Linear Regression model from scratch using only NumPy and Python's built-in math module,
+              without relying on machine learning libraries like scikit-learn.
+              The model was implemented using the Gradient Descent algorithm to optimize the weights by minimizing the mean squared error.
+              I manually handled all the core components, including predictions, loss calculation, gradient computation, and model training.
+              This project helped me deeply understand how linear regression works under the hood, including the role of learning rate,
+              the effect of iterations, and how convergence happens over time.</p>
+
+          </ProjectCard>
+
+          <ProjectCard>
+            <div className="flex items-center justify-between">
+              <p className="text-2xl font-bold">Logistic regression</p>
+              <Link target="_blank" href="https://github.com/Saikat-Mandal/Custom-models-ML/blob/main/Logistic_Regression.ipynb">
+                <IoLinkSharp className="text-blue-400 text-xl hover:scale-150 transition-all duration-300" />
+              </Link>
+            </div>
+            <p className=" my-2">I implemented a Logistic Regression model from scratch using NumPy and the math module in Python,
+              without using any machine learning libraries. I manually coded the sigmoid activation function, binary cross-entropy loss,
+              and the Gradient Descent algorithm to optimize the model's parameters. The model was trained to classify binary outcomes by learning from labeled data,
+              and I added functions to predict probabilities and final class labels. This project gave me a clear understanding of the mathematical foundation behind logistic regression,
+              including how it models probabilities and updates weights through backpropagation.</p>
+          </ProjectCard>
+        </div>
+
       </div>
 
       {/* software dev */}
