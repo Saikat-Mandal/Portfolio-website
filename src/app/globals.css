@@ -94,4 +94,16 @@
     /* Push the button downwards when pressed */
     transform: translateY(0);
   }
+
+  .card-dark {
+  --button_color: #2D2D2D;          /* dark gray */
+  --button_outline_color: #FFFFFF;  /* white border */
+  background: var(--button_outline_color);
+}
+
+.card_top-dark {
+  background: var(--button_color);
+  color: var(--button_outline_color);
+  border: 2px solid var(--button_outline_color);
+}
   

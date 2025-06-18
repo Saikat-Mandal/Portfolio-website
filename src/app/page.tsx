@@ -13,6 +13,10 @@ import DotRing from "./components/Dotring/Dotring";
 import Card from "./components/Card";
 import { useState, useRef } from "react";
 import { motion } from "motion/react"
+import { useDarkMode } from "./context/DarkmodeContext";
+
+import { IoMdSunny } from "react-icons/io";
+import { IoMoon } from "react-icons/io5";
 
 // Content translations
 const content = {
@@ -70,10 +74,17 @@ const content = {
   }
 };
 
+
+
+
+
+
 export default function Home() {
+
+  const { darkModeEnabled, toggleDarkMode } = useDarkMode();
+
   // State to track current language
   const [language, setLanguage] = useState<"en" | "jp">("en");
-  const [showAlert, setShowAlert] = useState<boolean>(false)
   const MLref = useRef<HTMLDivElement>(null);
   const SoftwareRef = useRef<HTMLDivElement>(null);
 
@@ -89,14 +100,11 @@ export default function Home() {
   const changeLanguage = () => {
     const newLanguage = language === "en" ? "jp" : "en";
     setLanguage(newLanguage);
-
-    // Show alert only after changing language
-    // if (!showAlert) {
-    //   alert("Language changed");
-    // }
-
-    // setShowAlert(prev => !prev);
   };
+
+  const setDarkMode = () => {
+    toggleDarkMode()
+  }
 
 
   // Get current content based on language
@@ -107,8 +115,14 @@ export default function Home() {
     window.location.href = "mailto:works.saikat@gmail.com";
   }
 
+  const textColor = darkModeEnabled ? "text-[white]" : "text-[black]"
+  const bgColor = darkModeEnabled ? "bg-[#2D2D2D]" : "white"
+
+  // const linkColor = darkModeEnabled && "text-[#CEFF1A]"
+  const changeColor = darkModeEnabled && "text-[#E97376]"
+
   return (
-    <div className="px-6 md:px-20 code-font" >
+    <div className={`px-6 md:px-20 code-font ${bgColor} ${textColor}`} >
       <div className="hidden lg:block">
         <DotRing />
       </div>
@@ -117,13 +131,17 @@ export default function Home() {
         <h1 className="text-xl font-bold">{t.name}</h1>
 
         <div className="flex items-center md:gap-x-12 gap-x-3">
-          <p onClick={scrollToML} className="md:text-xl text-xs font-medium hover:text-amber-300 hover:transition-all duration-300">Data science / ML</p>
-          <p onClick={scrollToSoftware} className="md:text-xl text-xs font-medium hover:text-blue-400 hover:transition-all duration-300">Software dev projects</p>
+          <p onClick={scrollToML} className={`md:text-xl text-xs font-medium hover:text-amber-300 hover:transition-all duration-300 ${changeColor}`}>Data science / ML</p>
+          <p onClick={scrollToSoftware} className={`md:text-xl text-xs font-medium hover:text-blue-400 hover:transition-all duration-300 ${changeColor}`}>Software dev projects</p>
         </div>
 
-        <div>
+        <div className="flex gap-x-3">
+          {darkModeEnabled ?
+            (<button className="mr-10 text-xl" onClick={setDarkMode}>{<IoMdSunny />}</button>) :
+            (<button className="mr-10 text-xl" onClick={setDarkMode}>{<IoMoon />}</button>)}
           <div >
             <input onChange={changeLanguage} id="check" type="checkbox" checked={language === "jp"} readOnly />
+
             <label className="switch" htmlFor="check">
               <svg viewBox="0 0 212.4992 84.4688" overflow="visible">
                 <path
@@ -135,6 +153,7 @@ export default function Home() {
               </svg>
             </label>
           </div>
+
         </div>
       </div>
 
@@ -145,8 +164,8 @@ export default function Home() {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <p className="text-4xl md:text-4xl font-bold">{t.intro}</p>
-          <p className="md:text-2xl my-5">{t.findMe} <Link target="_blank" href="https://x.com/saikat_07_" className="underline">{t.twitter}</Link> or on <Link target="_blank" href="https://www.linkedin.com/in/saikat-mandal-310ab61b0/" className="underline">{t.linkedin}</Link>,
-            or just <span onClick={sendMail} className="underline">{t.emailMe}</span> {t.saying}</p>
+          <p className="md:text-2xl my-5">{t.findMe} <Link target="_blank" href="https://x.com/saikat_07_" className={`underline ${changeColor}`}>{t.twitter}</Link> or on <Link target="_blank" href="https://www.linkedin.com/in/saikat-mandal-310ab61b0/" className={`underline ${changeColor}`}>{t.linkedin}</Link>,
+            or just <span onClick={sendMail} className={`underline ${changeColor}`}>{t.emailMe}</span> {t.saying}</p>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: -20 }}
